@@ -26,6 +26,6 @@ class Item {
     this.stockQuantity = stockQuantity;
     this.make = make;
     this.img = img;
-    this.category = category;
+    this.Category = category;
   }
 }
