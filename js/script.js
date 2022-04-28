@@ -48,13 +48,13 @@ function initializeCategories() {
   categories.push(category);
   category = new Category(
     7,
-    "Backpacks",
-    "Backpacks with the original Dota 2 Art Print"
+    "Wallets",
+    "Wallets with the original Dota 2 Art Print"
   );
   categories.push(category);
   category = new Category(
     8,
-    Squishies,
+    "Squishies",
     "Squishies based on the Dota 2 characters"
   );
   categories.push(category);
@@ -80,19 +80,19 @@ function initializeItems() {
     20,
     "Valve",
     null,
-    Squishies
+    "Squishies"
   );
   catalog.push(item);
   item = new Item(
     2,
-    "figma Lina Batch 2",
+    "Figma Lina Batch 2",
     'The hero with fiery abilities is joining the figma series! From the popular game "Dota 2" comes a figma of Lina the Slayer!',
     "Dota 2 original merchandise",
     76,
     10,
     "Valve",
     null,
-    Figurines
+    "Figurines"
   );
   catalog.push(item);
   item = new Item(
@@ -104,7 +104,7 @@ function initializeItems() {
     100,
     "Valve",
     null,
-    Figurines
+    "Figurines"
   );
   catalog.push(item);
   item = new Item(
@@ -112,121 +112,131 @@ function initializeItems() {
     "Dota 2 Doodle t-shirt",
     '100% cotton basic slim fit men"s crew t shirt',
     "Dota 2 original merchandise",
-    45,
+    25,
     100,
     "Valve",
     null,
-    T - Shirts
+    "T - Shirts"
   );
   catalog.push(item);
   item = new Item(
-    3,
-    "Nendoroid Dragon Knight",
-    "A dragon knight figurine!",
+    5,
+    "Meat Is Sweet",
+    "100% cotton basic slim fit men's crew t shirt with pudge art",
     "Dota 2 original merchandise",
-    45,
+    25,
     100,
     "Valve",
-    null
+    null,
+    "Figurines"
   );
   catalog.push(item);
   item = new Item(
-    3,
-    "Nendoroid Dragon Knight",
-    "A dragon knight figurine!",
+    6,
+    "Dire Creeps",
+    "100% cotton basic slim fit men's crew t shirt with dire creeps art",
     "Dota 2 original merchandise",
-    45,
+    25,
     100,
     "Valve",
-    null
+    null,
+    "T shirts"
   );
   catalog.push(item);
   item = new Item(
-    3,
-    "Nendoroid Dragon Knight",
-    "A dragon knight figurine!",
+    7,
+    "I Bring My Blade",
+    "100% cotton basic slim fit men's crew t shirt with juggernaut art",
     "Dota 2 original merchandise",
-    45,
+    25,
     100,
     "Valve",
-    null
+    null,
+    "T shirts"
   );
   catalog.push(item);
   item = new Item(
-    3,
-    "Nendoroid Dragon Knight",
-    "A dragon knight figurine!",
+    8,
+    "Phantom Assassin Inked",
+    "The International 2017 Dota 2 Phantom Assassin Inked t shirt",
     "Dota 2 original merchandise",
-    45,
+    25,
     100,
     "Valve",
-    null
+    null,
+    "T shirts"
   );
   catalog.push(item);
   item = new Item(
-    3,
-    "Nendoroid Dragon Knight",
-    "A dragon knight figurine!",
+    9,
+    "Flying Courier Service",
+    "100% Cotton basic slim fit men's crew t shirt with Flying Courier Service art",
     "Dota 2 original merchandise",
-    45,
+    25,
     100,
     "Valve",
-    null
+    null,
+    "T shirts"
   );
   catalog.push(item);
   item = new Item(
-    3,
-    "Nendoroid Dragon Knight",
-    "A dragon knight figurine!",
+    10,
+    "Dazzle Grin Mask",
+    "Double-layer face mask with elastic ear loops",
     "Dota 2 original merchandise",
-    45,
+    12,
     100,
     "Valve",
-    null
+    null,
+    "Masks"
   );
   catalog.push(item);
   item = new Item(
-    3,
-    "Nendoroid Dragon Knight",
-    "A dragon knight figurine!",
+    11,
+    "Techies Vs Jakiro Canvas Wallet",
+    "Canvas Wallets feature full-coverage artwork with rich pigment color and are made from 100% polyester.",
     "Dota 2 original merchandise",
-    45,
+    18,
     100,
     "Valve",
-    null
+    null,
+    "Wallets"
   );
   catalog.push(item);
   item = new Item(
-    3,
-    "Nendoroid Dragon Knight",
-    "A dragon knight figurine!",
+    12,
+    "Doppleganger Lancer Canvas Wallet",
+    "Canvas Wallets feature full-coverage artwork with rich pigment color and are made from 100% polyester.",
     "Dota 2 original merchandise",
-    45,
+    18,
     100,
     "Valve",
-    null
+    null,
+    "Wallets"
   );
   catalog.push(item);
   item = new Item(
-    3,
-    "Nendoroid Dragon Knight",
-    "A dragon knight figurine!",
+    13,
+    "Charge Into Darkness Canvas Wallet",
+    "ACanvas Wallets feature full-coverage artwork with rich pigment color and are made from 100% polyester.",
     "Dota 2 original merchandise",
-    45,
+    18,
     100,
     "Valve",
-    null
+    null,
+    "Wallets"
   );
   catalog.push(item);
   item = new Item(
-    3,
-    "Nendoroid Dragon Knight",
-    "A dragon knight figurine!",
+    14,
+    "Lane Battle Art Print",
+    "Fine Art Print",
     "Dota 2 original merchandise",
-    45,
+    25,
     100,
     "Valve",
-    null
+    null,
+    "Posters"
   );
   catalog.push(item);
   item = new Item(
