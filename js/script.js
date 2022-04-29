@@ -68,7 +68,7 @@ function initializeCategories() {
 function getCategory(categoryId) {}
 
 /**
- * Creates 3 Shoe objects for each category class (24 Shoe objects in total).
+ *20 items belonging to 8 different categories
  */
 function initializeItems() {
   let item = new Item(
@@ -240,69 +240,75 @@ function initializeItems() {
   );
   catalog.push(item);
   item = new Item(
-    3,
-    "Nendoroid Dragon Knight",
-    "A dragon knight figurine!",
+    15,
+    "Templar Assassin Portrait Mousepad",
+    "Our Marrow Edge mousepads will not fray over time.",
     "Dota 2 original merchandise",
-    45,
-    100,
+    20,
+    1000,
     "Valve",
-    null
+    'images/TAImg',
+    "MousePads"
   );
   catalog.push(item);
   item = new Item(
-    3,
-    "Nendoroid Dragon Knight",
-    "A dragon knight figurine!",
+    16,
+    "Fury of the Blade Art Print",
+    "Fine Art Print",
     "Dota 2 original merchandise",
-    45,
+    25,
     100,
     "Valve",
-    null
+    'images/FuryJugg',
+    "Posters"
   );
   catalog.push(item);
   item = new Item(
-    3,
-    "Nendoroid Dragon Knight",
-    "A dragon knight figurine!",
+    17,
+    "Sting From the Shadows Mousepad",
+    "Our Marrow Edge mousepads will not fray over time.",
     "Dota 2 original merchandise",
-    45,
+    22,
     100,
     "Valve",
-    null
+    'images/StingMousePad',
+    "Mousepads"
   );
   catalog.push(item);
   item = new Item(
-    3,
-    "Nendoroid Dragon Knight",
-    "A dragon knight figurine!",
+    18,
+    "The Sorcerer Stings Mousepad",
+    "Our Marrow Edge mousepads will not fray over time. ",
     "Dota 2 original merchandise",
-    45,
+    20,
     100,
     "Valve",
-    null
+    'images/RubickMousePad',
+    "MousePads"
   );
   catalog.push(item);
   item = new Item(
-    3,
-    "Nendoroid Dragon Knight",
-    "A dragon knight figurine!",
+    19,
+    "Ranger Smoke Art Print",
+    "Fine Art Print",
     "Dota 2 original merchandise",
-    45,
+    25,
     100,
     "Valve",
-    null
+    'images/DrowPrint',
+    "Posters"
   );
   catalog.push(item);
   item = new Item(
-    3,
-    "Nendoroid Dragon Knight",
-    "A dragon knight figurine!",
+    20,
+    "We Speak For the Trees",
+    "Fine Art Print",
     "Dota 2 original merchandise",
-    45,
-    100,
+    25,
+    120,
     "Valve",
-    null
+    'images/TreesPrint',
+    "Posters"
   );
   catalog.push(item);
 }
@@ -323,12 +329,16 @@ function setUpCart() {
  * @param {*} messageToDisplay Message to display in the alert.
  */
 var timeoutForMsg;
-function showStatusMessage(cssClass, messageToDisplay) {}
+function showStatusMessage(cssClass, messageToDisplay) {
+  
+}
 
 /**
  * Hides the status alert.
  */
-function hideStatusMessage() {}
+function hideStatusMessage() {
+
+}
 
 /**
  * Clears the div element which contains shoe information.
