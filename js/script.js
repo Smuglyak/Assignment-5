@@ -1,5 +1,37 @@
 const { Console } = require("console");
 
+class Category {
+  constructor(catId, catName, desc) {
+    this.catId = catId;
+    this.catName = catName;
+    this.desc = desc;
+  }
+}
+
+class Item {
+  constructor(
+    itemID,
+    itemtitle,
+    desc,
+    brand,
+    unitPrice,
+    stockQuantity,
+    make,
+    img,
+    category
+  ) {
+    this.itemID = itemID;
+    this.itemtitle = itemtitle;
+    this.desc = desc;
+    this.brand = brand;
+    this.unitPrice = unitPrice;
+    this.stockQuantity = stockQuantity;
+    this.make = make;
+    this.img = img;
+    this.Category = category;
+  }
+}
+
 //the arrays that will store all elements
 var categories = [];
 var catalog = [];
@@ -247,7 +279,7 @@ function initializeItems() {
     20,
     1000,
     "Valve",
-    'images/TAImg',
+    "images/TAImg",
     "MousePads"
   );
   catalog.push(item);
@@ -259,7 +291,7 @@ function initializeItems() {
     25,
     100,
     "Valve",
-    'images/FuryJugg',
+    "images/FuryJugg",
     "Posters"
   );
   catalog.push(item);
@@ -271,7 +303,7 @@ function initializeItems() {
     22,
     100,
     "Valve",
-    'images/StingMousePad',
+    "images/StingMousePad",
     "Mousepads"
   );
   catalog.push(item);
@@ -283,7 +315,7 @@ function initializeItems() {
     20,
     100,
     "Valve",
-    'images/RubickMousePad',
+    "images/RubickMousePad",
     "MousePads"
   );
   catalog.push(item);
@@ -295,7 +327,7 @@ function initializeItems() {
     25,
     100,
     "Valve",
-    'images/DrowPrint',
+    "images/DrowPrint",
     "Posters"
   );
   catalog.push(item);
@@ -307,7 +339,7 @@ function initializeItems() {
     25,
     120,
     "Valve",
-    'images/TreesPrint',
+    "images/TreesPrint",
     "Posters"
   );
   catalog.push(item);
@@ -329,16 +361,12 @@ function setUpCart() {
  * @param {*} messageToDisplay Message to display in the alert.
  */
 var timeoutForMsg;
-function showStatusMessage(cssClass, messageToDisplay) {
-  
-}
+function showStatusMessage(cssClass, messageToDisplay) {}
 
 /**
  * Hides the status alert.
  */
-function hideStatusMessage() {
-
-}
+function hideStatusMessage() {}
 
 /**
  * Clears the div element which contains shoe information.

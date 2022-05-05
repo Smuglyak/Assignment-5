@@ -2,4 +2,4 @@
 - How to put img and category objects as properties of the items
 - How to make js files connected(the constructors dont link)
 - Wtf is the showListOfItems();
-- 
+- Do we link our previous assignment to this project?
