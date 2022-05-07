@@ -1,4 +1,4 @@
-const { Console } = require("console");
+// const { Console } = require("console");
 
 class Category {
   constructor(catId, catName, desc) {
@@ -10,8 +10,8 @@ class Category {
 
 class Item {
   constructor(
-    itemID,
-    itemtitle,
+    itemId,
+    itemTitle,
     desc,
     brand,
     unitPrice,
@@ -20,15 +20,15 @@ class Item {
     img,
     category
   ) {
-    this.itemID = itemID;
-    this.itemtitle = itemtitle;
+    this.itemId = itemId;
+    this.itemTitle = itemTitle;
     this.desc = desc;
     this.brand = brand;
     this.unitPrice = unitPrice;
     this.stockQuantity = stockQuantity;
     this.make = make;
     this.img = img;
-    this.Category = category;
+    this.category = category;
   }
 }
 
@@ -97,7 +97,14 @@ function initializeCategories() {
  * Returns the category which matches the specified id.
  * @param {*} categoryId Id used to find category.
  */
-function getCategory(categoryId) {}
+function getCategory(categoryId) {
+  for (var i = 0; i < categories.length; i++) {
+    if (categories[i].catId == categoryId) {
+      return categories[i];
+    }
+  }
+  return null;
+}
 
 /**
  *20 items belonging to 8 different categories
@@ -111,8 +118,8 @@ function initializeItems() {
     15,
     20,
     "Valve",
-    null,
-    "Squishies"
+    "/images/blindBag.png",
+    getCategory(8)
   );
   catalog.push(item);
   item = new Item(
@@ -123,8 +130,8 @@ function initializeItems() {
     76,
     10,
     "Valve",
-    null,
-    "Figurines"
+    "/images/figmaLuna.jpg",
+    getCategory(1)
   );
   catalog.push(item);
   item = new Item(
@@ -135,8 +142,8 @@ function initializeItems() {
     45,
     100,
     "Valve",
-    null,
-    "Figurines"
+    "/images/nendoroid.jpg",
+    getCategory(1)
   );
   catalog.push(item);
   item = new Item(
@@ -147,8 +154,8 @@ function initializeItems() {
     25,
     100,
     "Valve",
-    null,
-    "T - Shirts"
+    "/images/doodle.jpg",
+    getCategory(2)
   );
   catalog.push(item);
   item = new Item(
@@ -159,8 +166,8 @@ function initializeItems() {
     25,
     100,
     "Valve",
-    null,
-    "Figurines"
+    "/images/meatIsSweet.png",
+    getCategory(1)
   );
   catalog.push(item);
   item = new Item(
@@ -171,8 +178,8 @@ function initializeItems() {
     25,
     100,
     "Valve",
-    null,
-    "T shirts"
+    "/images/direCreeps.png",
+    getCategory(2)
   );
   catalog.push(item);
   item = new Item(
@@ -183,8 +190,8 @@ function initializeItems() {
     25,
     100,
     "Valve",
-    null,
-    "T shirts"
+    "/images/iBringMyBlade.png",
+    getCategory(2)
   );
   catalog.push(item);
   item = new Item(
@@ -195,8 +202,8 @@ function initializeItems() {
     25,
     100,
     "Valve",
-    null,
-    "T shirts"
+    "/images/phantom.png",
+    getCategory(2)
   );
   catalog.push(item);
   item = new Item(
@@ -207,8 +214,8 @@ function initializeItems() {
     25,
     100,
     "Valve",
-    null,
-    "T shirts"
+    "/images/Flying.jpg",
+    getCategory(2)
   );
   catalog.push(item);
   item = new Item(
@@ -219,8 +226,8 @@ function initializeItems() {
     12,
     100,
     "Valve",
-    null,
-    "Masks"
+    "/images/dazzle.png",
+    getCategory(6)
   );
   catalog.push(item);
   item = new Item(
@@ -231,8 +238,8 @@ function initializeItems() {
     18,
     100,
     "Valve",
-    null,
-    "Wallets"
+    "/images/techies.jpg",
+    getCategory(7)
   );
   catalog.push(item);
   item = new Item(
@@ -243,8 +250,8 @@ function initializeItems() {
     18,
     100,
     "Valve",
-    null,
-    "Wallets"
+    "/images/doppel.png",
+    getCategory(7)
   );
   catalog.push(item);
   item = new Item(
@@ -255,8 +262,8 @@ function initializeItems() {
     18,
     100,
     "Valve",
-    null,
-    "Wallets"
+    "/images/charge.png",
+    getCategory(7)
   );
   catalog.push(item);
   item = new Item(
@@ -267,8 +274,8 @@ function initializeItems() {
     25,
     100,
     "Valve",
-    null,
-    "Posters"
+    "/images/lane.png",
+    getCategory(4)
   );
   catalog.push(item);
   item = new Item(
@@ -279,8 +286,8 @@ function initializeItems() {
     20,
     1000,
     "Valve",
-    "images/TAImg",
-    "MousePads"
+    "/images/TAImg.png",
+    getCategory(3)
   );
   catalog.push(item);
   item = new Item(
@@ -291,8 +298,8 @@ function initializeItems() {
     25,
     100,
     "Valve",
-    "images/FuryJugg",
-    "Posters"
+    "/images/FuryJugg.jpg",
+    getCategory(4)
   );
   catalog.push(item);
   item = new Item(
@@ -303,8 +310,8 @@ function initializeItems() {
     22,
     100,
     "Valve",
-    "images/StingMousePad",
-    "Mousepads"
+    "/images/StingMousepad.png",
+    getCategory(3)
   );
   catalog.push(item);
   item = new Item(
@@ -315,8 +322,8 @@ function initializeItems() {
     20,
     100,
     "Valve",
-    "images/RubickMousePad",
-    "MousePads"
+    "/images/RubickMousePad.png",
+    getCategory(3)
   );
   catalog.push(item);
   item = new Item(
@@ -327,8 +334,8 @@ function initializeItems() {
     25,
     100,
     "Valve",
-    "images/DrowPrint",
-    "Posters"
+    "/images/DrowPrint.png",
+    getCategory(4)
   );
   catalog.push(item);
   item = new Item(
@@ -339,8 +346,8 @@ function initializeItems() {
     25,
     120,
     "Valve",
-    "images/TreesPrint",
-    "Posters"
+    "/images/TreesPrint.png",
+    getCategory(4)
   );
   catalog.push(item);
 }
@@ -361,17 +368,28 @@ function setUpCart() {
  * @param {*} messageToDisplay Message to display in the alert.
  */
 var timeoutForMsg;
-function showStatusMessage(cssClass, messageToDisplay) {}
+function showStatusMessage(cssClass, messageToDisplay) {
+  let alertBox = document.getElementById("alertBox");
+  alertBox.style.display = "block";
+  alertBox.setAttribute("class", cssClass);
+  alertBox.innerHTML = "<p>" + messageToDisplay + "</p>";
+  setTimeout(hideStatusMessage, 5000);
+}
 
 /**
  * Hides the status alert.
  */
-function hideStatusMessage() {}
+function hideStatusMessage() {
+  // let alertBox = document.getElementById("alertBox");
+  // alertBox.style.display = "none";
+}
 
 /**
  * Clears the div element which contains shoe information.
  */
-function clearMainContainer() {}
+function clearMainContainer() {
+  document.getElementById("divMainContainer").innerHTML = "";
+}
 
 /**
  * Displays all shoes in the catalog using bootstrap cards.
@@ -379,24 +397,28 @@ function clearMainContainer() {}
 function showListOfItems() {
   clearMainContainer();
   let mainContainer = document.getElementById("divMainContainer");
+  //init all the containers
   let content = `<div class="container">`;
   content += `<div class="row rowShift">`;
+  //logic for separating the rows by 4 items,
+  //first we check if the current item is the fourth one by count, if not we add the content of the card,
+  //else if it is, we add the ending part of element, and we create another row.
   for (let i = 0; i < catalog.length; i++) {
     const item = catalog[i];
-    const addRow = i % 3 == 0;
+    const addRow = i % 4 == 0;
     if (addRow && i > 0) {
       content += `</div> <div class="row rowShift">`;
     }
     content += `
-        <div class="card text-white text-center bg-dark mb-3" style="width: 21rem; margin-right: 2%">
-            <div class="card-header">${item.category.name}</div>
-            <div class="card-body">
-                <img src="${item.image}" class="card-img-top" alt="..." style="width: 17rem; height: 250px; border-radius: 10pt">
-                <h5 class="card-title"><br>${item.title}</h5>
-                <p class="card-text">${item.description}</p>
-                <p class="card-text">$${item.price}</p>
-                <button type="button" class="btn btn-secondary" onclick="addToCart(${item.id})">Add To Cart <i class="fa fa-cart-plus"></i></button>
-                <button type="button" class="btn btn-secondary" onclick="showItemDetails(${item.id})")>Details <i class="fa fa-info"></i></button>
+        <div class="card text-white text-center bg-dark mt-5" style="width: 20.5rem; margin-right: 0%">
+            <div class="card-header">${item.category.catName}</div>
+            <div class="card-body"> 
+                <img src="${item.img}" class="card-img-top" alt="..." style="width: 15rem; height: 250px; border-radius: 10pt">
+                <h5 class="card-title"><br>${item.itemTitle}</h5>
+                <p class="card-text">${item.desc}</p>
+                <p class="card-text">$${item.unitPrice}</p>
+                <button type="button" class="btn btn-secondary" onclick="addToCart(${item.itemId})">Add To Cart <i class="fa fa-cart-plus"></i></button>
+                <button type="button" class="btn btn-secondary" onclick="showItemDetails(${item.itemId})")>Details <i class="fa fa-info"></i></button>
             </div>
         </div>
         `;
@@ -477,37 +499,3 @@ function searchByKeyword() {
   }
   searchBar.value = "";
 }
-
-class Category {
-  constructor(catId, catName, desc) {
-    this.catId = catId;
-    this.catName = catName;
-    this.desc = desc;
-  }
-}
-
-class Item {
-  constructor(
-    itemID,
-    itemtitle,
-    desc,
-    brand,
-    unitPrice,
-    stockQuantity,
-    make,
-    img,
-    category
-  ) {
-    this.itemID = itemID;
-    this.itemtitle = itemtitle;
-    this.desc = desc;
-    this.brand = brand;
-    this.unitPrice = unitPrice;
-    this.stockQuantity = stockQuantity;
-    this.make = make;
-    this.img = img;
-    this.Category = category;
-  }
-}
-
-setUpCart();
