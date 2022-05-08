@@ -400,29 +400,44 @@ function showListOfItems() {
   //init all the containers
   let content = `<div class="container">`;
   content += `<div class="row rowShift">`;
-  //logic for separating the rows by 4 items,
-  //first we check if the current item is the fourth one by count, if not we add the content of the card,
-  //else if it is, we add the ending part of element, and we create another row.
   for (let i = 0; i < catalog.length; i++) {
     const item = catalog[i];
     const addRow = i % 4 == 0;
     if (addRow && i > 0) {
       content += `</div> <div class="row rowShift">`;
     }
-    content += `
-        <div class="card text-white text-center bg-dark mt-5" style="width: 20.5rem; margin-right: 0%">
-            <div class="card-header">${item.category.catName}</div>
-            <div class="card-body"> 
-                <img src="${item.img}" class="card-img-top" alt="..." style="width: 15rem; height: 250px; border-radius: 10pt">
-                <h5 class="card-title"><br>${item.itemTitle}</h5>
-                <p class="card-text">${item.desc}</p>
-                <p class="card-text">$${item.unitPrice}</p>
-                <button type="button" class="btn btn-secondary" onclick="addToCart(${item.itemId})">Add To Cart <i class="fa fa-cart-plus"></i></button>
-                <button type="button" class="btn btn-secondary" onclick="showItemDetails(${item.itemId})")>Details <i class="fa fa-info"></i></button>
-            </div>
-        </div>
-        `;
+    content += `      
+     <div class="col-md-6 col-lg-3">
+       <div class="card bg-dark mt-3 " style="width: 20.5rem;">
+       <div class="card-header">${item.category.catName}</div>
+         <div class="card-body text-center text-white">
+           <div class="card-header">Figurines</div>
+           <img src="${item.img}" class="card-img-top" alt="..." style="width: 15rem; height: 250px; border-radius: 10pt">
+           <h5 class="card-title mb-3">${item.itemTitle}</h5>
+           <p class="card-text">
+             ${item.desc}
+           </p>
+           <button
+             type="button"
+             class="btn btn-secondary"
+             onclick="addToCart(${item.itemId})"
+           >
+             Add To Cart <i class="fa fa-cart-plus"></i>
+           </button>
+           <button
+             type="button"
+             class="btn btn-secondary"
+             onclick="showItemDetails(${item.itemId})"
+             )
+           >
+             Details <i class="fa fa-info"></i>
+           </button>
+         </div>
+       </div>
+     </div>
+  `;
   }
+
   content += "</div> </div>";
   mainContainer.innerHTML += content;
 }
