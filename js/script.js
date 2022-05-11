@@ -37,7 +37,7 @@ var categories = [];
 var catalog = [];
 var cart = [];
 
-var imageFolder = "images/";
+var imageFolder = "../images";
 
 function initializeCategories() {
   //Populate the arrays with elements
@@ -167,7 +167,7 @@ function initializeItems() {
     100,
     "Valve",
     "/images/meatIsSweet.png",
-    getCategory(1)
+    getCategory(2)
   );
   catalog.push(item);
   item = new Item(
@@ -373,15 +373,15 @@ function showStatusMessage(cssClass, messageToDisplay) {
   alertBox.style.display = "block";
   alertBox.setAttribute("class", cssClass);
   alertBox.innerHTML = "<p>" + messageToDisplay + "</p>";
-  setTimeout(hideStatusMessage, 5000);
+  setTimeout(hideStatusMessage, 2000);
 }
 
 /**
  * Hides the status alert.
  */
 function hideStatusMessage() {
-  // let alertBox = document.getElementById("alertBox");
-  // alertBox.style.display = "none";
+  let alertBox = document.getElementById("alertBox");
+  alertBox.innerHTML = "";
 }
 
 /**
@@ -395,6 +395,7 @@ function clearMainContainer() {
  * Displays all shoes in the catalog using bootstrap cards.
  */
 function showListOfItems() {
+  document.getElementById("itemsCards").innerHTML = "";
   clearMainContainer();
   let mainContainer = document.getElementById("divMainContainer");
   //init all the containers
@@ -408,11 +409,10 @@ function showListOfItems() {
     }
     content += `      
      <div class="col-md-6 col-lg-3">
-       <div class="card bg-dark mt-3 " style="width: 20.5rem;">
-       <div class="card-header">${item.category.catName}</div>
+       <div class="card bg-dark mt-3 " style="width: 20.5rem; height: 600px ">       
          <div class="card-body text-center text-white">
-           <div class="card-header">Figurines</div>
-           <img src="${item.img}" class="card-img-top" alt="..." style="width: 15rem; height: 250px; border-radius: 10pt">
+           <div class="card-header">${item.category.catName}</div>
+           <img src="${item.img}" class="card-img-top" alt="..." style="width: 15rem; border-radius: 10pt">
            <h5 class="card-title mb-3">${item.itemTitle}</h5>
            <p class="card-text">
              ${item.desc}
@@ -428,7 +428,6 @@ function showListOfItems() {
              type="button"
              class="btn btn-secondary"
              onclick="showItemDetails(${item.itemId})"
-             )
            >
              Details <i class="fa fa-info"></i>
            </button>
@@ -446,71 +445,208 @@ function showListOfItems() {
  * Displays all shoes found in the user's cart in a bootstrap table.
  */
 function viewCart() {
-  clearMainContainer();
+  document.getElementById("divMainContainer").innerHTML = "";
+  let itemDetails = "";
 
-  let mainContainer = document.getElementById("divMainContainer");
-  let shoeTable =
-    '<table class="table table-striped tableAlignText"><thead><tr class="trTitle"><th colspan=9>Cart Details</th></tr> <tr><th>ID</th><th>Name</th><th>Description</th><th>Price</th><th>Display</th><th></th><th></th></tr></thead><tbody>';
+  itemDetails += `
+  <h1 style="text-align:center">Cart</h1>
+  <table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Items Id</th>
+            <th>Item Title</th>
+            <th>Description</th>
+            <th>Brand</th>
+            <th>Price</th>
+            <th>Quantity in Stock</th>
+            <th>Make</th>
+            <th>Image</th>
+            <th>Category</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>`;
+  for (var i = 0; i < cart.length; i++) {
+    itemDetails += `<tr>
+            <td>${cart[i].itemId}</td>
+            <td>${cart[i].itemTitle}</td>
+            <td>${cart[i].desc}</td>
+            <td>${cart[i].brand}</td>
+            <td>${cart[i].unitPrice}</td>
+            <td>${cart[i].stockQuantity}</td>
+            <td>${cart[i].make}</td>
+            <td><img src="${cart[i].img}" width="30%" height="30%"></td>
+            <td>${cart[i].category.catName}</td>
+            <td><button class="btn btn-danger" onclick="removeFromCart(${cart[i].itemId}); viewCart()"> Remove </button></td>
+            <td><button class="btn btn-dark" onclick="showItemDetails(${cart[i].itemId})"> Details </button></td>
+            </tr>`;
+  }
+  `</tbody>
+    </table>`;
 
-  cart.forEach((shoe) => {
-    shoeTable += `<tr> <td>${shoe.id}</td> <td>${shoe.title}</td> <td>${shoe.description}</td> <td>$${shoe.price}</td> <td><img src="${shoe.image}" width="75" height="75" class="img-thumbnail"/></td> <td><button type="button" class="btn btn-danger" onclick="removeFromCart(${shoe.id})">Remove Item <i class="fa fa-minus"></i></button></td> <td><button type="button" class="btn btn-primary" onclick="showItemDetails(${shoe.id})">Details <i class="fa fa-info"></i></button></td></tr>`;
-  });
-
-  shoeTable += "</tbody></table>";
-
-  mainContainer.innerHTML = shoeTable;
+  document.getElementById("itemsCards").innerHTML = itemDetails;
 }
 
 /**
  * Finds an item in catalog based on id.
  * @param {*} itemId Id used to search for item.
  */
-function findItemById(itemId) {}
+function findItemById(itemId) {
+  for (var i = 0; i <= catalog.length; i++) {
+    if (catalog[i].itemId == itemId) {
+      return catalog[i];
+    }
+  }
+}
 
 /**
  * Displays the details of an item.
  * @param {*} itemId Id used to find item to be detailed.
  */
-function showItemDetails(itemId) {}
+function showItemDetails(itemId) {
+  let item = findItemById(itemId);
+
+  document.getElementById("divMainContainer").innerHTML = "";
+  document.getElementById("itemsCards").innerHTML = "";
+
+  let itemDetails = "";
+
+  itemDetails += `<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Items Id</th>
+            <th>Item Title</th>
+            <th>Description</th>
+            <th>Brand</th>
+            <th>Price</th>
+            <th>Quantity in Stock</th>
+            <th>Make</th>
+            <th>Image</th>
+            <th>Category</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>${item.itemId}</td>
+            <td>${item.itemTitle}</td>
+            <td>${item.desc}</td>
+            <td>${item.brand}</td>
+            <td>${item.unitPrice}</td>
+            <td>${item.stockQuantity}</td>
+            <td>${item.make}</td>
+            <td><img src="${item.thumbnail}" width="30%" height="30%"></td>
+            <td>${item.category.catName}</td>
+        </tr>
+    </tbody>
+    </table>`;
+
+  document.getElementById("itemsCards").innerHTML = itemDetails;
+}
 
 /**
- * Adds an item from the catalog to the user's cart.
+ * Adds an item from the caftalog to the user's cart.
  * @param {*} itemId Id to find item in catalog.
  */
-function addToCart(itemId) {}
+function addToCart(itemId) {
+  if (itemId < catalog.length) {
+    cart.push(catalog[itemId - 1]);
+    showStatusMessage("alert-success", "Successfully added item to cart");
+  } else {
+    console.log("Added a wrong item to the cart");
+    showStatusMessage(
+      "alert-danger",
+      "Somehow you tried to add an item that doesn't exist"
+    );
+  }
+}
 
 /**
  * Removes an item from the user's cart.
  * @param {*} itemId Id to find item in cart.
  */
-function removeFromCart(itemId) {}
+function removeFromCart(itemId) {
+  for (var i = 0; i < cart.length; i++) {
+    if (itemId === cart[i].itemId) {
+      cart.splice(i, 1);
+      showStatusMessage("alert-danger", "Successfully removed item from cart");
+      break;
+    }
+  }
+}
 
 /**
  * Displays a specified array as a boostrap table.
  * @param {*} array Array to display as a table.
  */
-function viewArrayAsTable(array) {}
+function viewArrayAsTable(array) {
+//not needed since this method is not in the pdf.
+}
 
 /**
  * Seaches for an item based on what the user typed.
  */
 function searchByKeyword() {
-  let searchBar = document.getElementById("carSearchBar");
-  const keyword = searchBar.value;
-  if (keyword) {
-    let completedSearch =
-      findShoeWithProperty(keyword, "category") ||
-      findShoeWithProperty(keyword, "description") ||
-      findShoeWithProperty(keyword, "title");
-    if (!completedSearch) {
-      showStatusMessage(
-        "alert alert-info",
-        `There are no items with a category, name or description matching \"${keyword}\".`
-      );
-      showListOfItems();
+  var keywordFound = false;
+  keyword = document.getElementById("textbox").value;
+  document.getElementById("divMainContainer").innerHTML = "";
+  let itemDetails = "";
+  for (var i = 0; i < catalog.length; i++) {
+    if (
+      keyword == catalog[i].itemTitle ||
+      keyword == catalog[i].desc ||
+      keyword == catalog[i].category.catName ||
+      keyword == catalog[i].category.catDesc
+    ) {
+      keywordFound = true;
     }
-  } else {
-    viewArrayAsTable(catalog);
   }
-  searchBar.value = "";
+  if (keywordFound == true) {
+    itemDetails += `
+    <h1 style="text-align:center">Search results</h1>
+    <table class="table">
+      <thead class="thead-dark">
+          <tr>
+              <th>Items Id</th>
+              <th>Item Title</th>
+              <th>Description</th>
+              <th>Brand</th>
+              <th>Price</th>
+              <th>Quantity in Stock</th>
+              <th>Make</th>
+              <th>Image</th>
+              <th>Category</th>
+              <th></th>
+              <th></th>
+          </tr>
+      </thead>
+      <tbody>`;
+    for (var i = 0; i < catalog.length; i++) {
+      if (
+        keyword == catalog[i].itemTitle ||
+        keyword == catalog[i].itemDetails ||
+        keyword == catalog[i].category.catName ||
+        keyword == catalog[i].category.catDesc
+      ) {
+        itemDetails += `<tr>
+      <td>${catalog[i].itemId}</td>
+      <td>${catalog[i].itemTitle}</td>
+      <td>${catalog[i].desc}</td>
+      <td>${catalog[i].brand}</td>
+      <td>${catalog[i].unitPrice}</td>
+      <td>${catalog[i].stockQuantity}</td>
+      <td>${catalog[i].make}</td>
+      <td><img src="${catalog[i].img}" width="30%" height="30%"></td>
+      <td>${catalog[i].category.catName}</td>
+      <td><button class="btn btn-success" onclick="addToCart(${catalog[i].itemId}); viewCart()"> Add to Cart </button></td>
+      <td><button class="btn btn-dark" onclick="showItemDetails(${catalog[i].itemId})"> Details </button></td>
+      </tr>`;
+        `</tbody>
+</table>`;
+      }
+    }
+    document.getElementById("divMainContainer").innerHTML = itemDetails;
+  } else {
+    showStatusMessage("alert-danger", "Could not find any results");
+  }
 }
